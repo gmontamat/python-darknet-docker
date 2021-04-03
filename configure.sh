@@ -74,6 +74,17 @@ case ${tag} in
   enable_openmp
   enable_libso
   ;;
+"3.6-gpu")
+  enable_gpu
+  enable_cudnn
+  enable_libso
+  ;;
+"3.6-gpu-cv")
+  enable_opencv
+  enable_gpu
+  enable_cudnn
+  enable_libso
+  ;;
 *)
   echo "error: $tag is not supported"
   exit 1
