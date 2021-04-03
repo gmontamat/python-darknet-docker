@@ -1,6 +1,6 @@
 ARG PYTHON_VERSION
 
-FROM ubuntu:18.04 as builder
+FROM ubuntu:18.04 AS builder
 LABEL maintainer="Gustavo Montamat"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -21,12 +21,12 @@ ENV SOURCE_COMMIT $SOURCE_COMMIT
 ARG CONFIG
 
 RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
-      && git checkout $SOURCE_BRANCH \
-      && git reset --hard $SOURCE_COMMIT \
-      && /tmp/configure.sh $CONFIG && make \
-      && cp libdarknet.so /tmp \
-      && cp darknet.py /tmp \
-      && cd .. && rm -rf darknet
+    && git checkout $SOURCE_BRANCH \
+    && git reset --hard $SOURCE_COMMIT \
+    && /tmp/configure.sh $CONFIG && make \
+    && cp libdarknet.so /tmp \
+    && cp darknet.py /tmp \
+    && cd .. && rm -rf darknet
 
 FROM python:$PYTHON_VERSION
 LABEL maintainer="Gustavo Montamat"
