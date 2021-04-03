@@ -1,0 +1,46 @@
+ARG PYTHON_VERSION
+
+FROM ubuntu:18.04 AS builder
+LABEL maintainer="Gustavo Montamat"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y gnupg2 ca-certificates git \
+       build-essential libopencv-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY configure.sh /tmp/
+
+ARG SOURCE_BRANCH=unspecified
+ENV SOURCE_BRANCH $SOURCE_BRANCH
+
+ARG SOURCE_COMMIT=unspecified
+ENV SOURCE_COMMIT $SOURCE_COMMIT
+
+ARG CONFIG
+
+RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
+      && git checkout $SOURCE_BRANCH \
+      && git reset --hard $SOURCE_COMMIT \
+      && /tmp/configure.sh $CONFIG && make \
+      && cp libdarknet.so /tmp \
+      && cp darknet.py /tmp \
+      && cd .. && rm -rf darknet
+
+FROM python:$PYTHON_VERSION
+LABEL maintainer="Gustavo Montamat"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y libopencv-highgui3.2 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /tmp/libdarknet.so /usr/local/darknet/libdarknet.so
+COPY --from=builder /tmp/darknet.py /usr/local/darknet/darknet.py
+
+ENV DARKNET_PATH=/usr/local/darknet
+ENV PYTHONPATH "${PYTHONPATH}:/usr/local/darknet"
