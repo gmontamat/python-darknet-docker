@@ -53,7 +53,7 @@ YOLOv4+SORT runs at ~15fps on a system with an *Intel Core i7* and a *GeForce GT
 *Quadro M1000M* run YOLOv4 at 4fps but can run YOLOv4-Tiny at 30fps.
 
 You can test video inference using the [sample code in this repo](./test/video) taken from
-the [Darknet repository](https://github.com/AlexeyAB/darknet):
+the [Darknet repository](https://github.com/AlexeyAB/darknet/blob/master/darknet_video.py):
 
 ```bash
 $ git clone https://github.com/gmontamat/python-darknet-docker.git
