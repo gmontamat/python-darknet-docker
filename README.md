@@ -46,11 +46,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ### Video inference
 
-Python is not the most suitable language to handle video streams. Compared to other compiled languages such as C++ or
-SDKs such as [NVIDIA DeepStream](https://developer.nvidia.com/deepstream-sdk), video inference won't be as smooth.
+Python is not the most suitable language to handle video streams. Compared to other compiled languages like *C++* or
+SDKs such as [NVIDIA DeepStream](https://developer.nvidia.com/deepstream-sdk), video inference won't run as smoothly.
 However, it is possible to perform real-time tracking on Python using its `multiprocessing` module and a powerful GPU.
-YOLOv4+SORT runs at ~15fps on a system with an `i7` and a `GeForce GTX 1080`. Lower-end GPUs such as the `Quadro M1000M`
-run YOLOv4 at 4fps but can run YOLOv4-Tiny at 30fps.
+YOLOv4+SORT runs at ~15fps on a system with an *Intel Core i7* and a *GeForce GTX 1080*. Mobile GPUs such as the
+*Quadro M1000M* run YOLOv4 at 4fps but can run YOLOv4-Tiny at 30fps.
 
 You can test video inference using the [sample code in this repo](./test/video) taken from
 the [Darknet repository](https://github.com/AlexeyAB/darknet):
@@ -58,8 +58,10 @@ the [Darknet repository](https://github.com/AlexeyAB/darknet):
 ```bash
 $ git clone https://github.com/gmontamat/python-darknet-docker.git
 $ cd python-darknet-docker
-$ wget https://github.com/intel-iot-devkit/sample-videos/raw/master/face-demographics-walking.mp4 test/video
-$ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights test/video
+$ wget https://github.com/intel-iot-devkit/sample-videos/raw/master/face-demographics-walking.mp4 \
+       -O test/video/face-demographics-walking.mp4
+$ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights \
+       -O test/video/yolov4-tiny.weights
 $ sudo docker run --gpus all -it --rm -v $(realpath ./test/video):/usr/src/app \
                   -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
                   -w /usr/src/app gmontamat/python-darknet:gpu python3 darknet_video.py \
@@ -67,15 +69,27 @@ $ sudo docker run --gpus all -it --rm -v $(realpath ./test/video):/usr/src/app \
                   --config_file cfg/yolov4-tiny.cfg --data_file cfg/coco.data
 ```
 
-If you see the following error:
+Or, if you prefer using your webcam (`/dev/video0` on Linux):
+
+```bash
+$ git clone https://github.com/gmontamat/python-darknet-docker.git
+$ cd python-darknet-docker
+$ sudo docker run --gpus all -it --rm -v $(realpath ./test/video):/usr/src/app \
+                  -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
+                  --device=/dev/video0 -w /usr/src/app gmontamat/python-darknet:gpu \
+                  python3 darknet_video.py --weights yolov4-tiny.weights \
+                  --config_file cfg/yolov4-tiny.cfg --data_file cfg/coco.data
+```
+
+If you encounter the following error:
 
 ```
 No protocol specified
 Error: Can't open display X:X
 ```
 
-Run `xhost local:root` before you start the container with `sudo` or `xhost local:docker` if you use the `docker` group
-to run containers without `sudo`.
+Fix it by running `xhost local:root` before you start the container, if you use Docker with `sudo`. Or, if you use
+the `docker` group to run containers without `sudo`, use `xhost local:docker`.
 
 ## TODO
 
