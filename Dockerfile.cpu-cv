@@ -1,5 +1,3 @@
-ARG PYTHON_VERSION
-
 FROM ubuntu:18.04 AS builder
 LABEL maintainer="Gustavo Montamat"
 

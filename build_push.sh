@@ -19,7 +19,6 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     if [[ "$DOCKER_TAG" == *-cv ]]; then
       echo "building with OpenCV support"
       docker build \
-        --build-arg PYTHON_VERSION=3.6 \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
@@ -27,7 +26,6 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     else
       echo "building without OpenCV support"
       docker build \
-        --build-arg PYTHON_VERSION=3.6 \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
@@ -38,7 +36,6 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     if [[ "$DOCKER_TAG" == *-cv ]]; then
       echo "building with OpenCV support"
       docker build \
-        --build-arg PYTHON_VERSION=3.6 \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
@@ -46,7 +43,6 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     else
       echo "building without OpenCV support"
       docker build \
-        --build-arg PYTHON_VERSION=3.6 \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
@@ -54,7 +50,7 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     fi
   fi
 
-  # docker push $DOCKER_REPO:$DOCKER_TAG
+  docker push $DOCKER_REPO:$DOCKER_TAG
 done
 
 echo "run \`docker image prune\` to remove builder images"
