@@ -6,9 +6,9 @@ on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayash
 
 ## Base Image Tags
 
-CPU images are based on [Ubuntu Docker Official Images](https://hub.docker.com/_/ubuntu) and GPU images are based on
-[nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/). Images include `python 3.6`, an updated version of `pip`, and the
-following libraries:
+CPU images are based on [Ubuntu Docker Official Images](https://hub.docker.com/_/ubuntu) (`ubuntu:18.04`) and GPU images
+are based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/) (`nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04`).
+Images include `python 3.6`, an updated version of `pip`, and the following libraries:
 
 * [Darknet](https://github.com/AlexeyAB/darknet)
 * [Numpy](https://pypi.org/project/numpy/)
