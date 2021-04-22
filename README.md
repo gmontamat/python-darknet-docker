@@ -74,6 +74,8 @@ Or, if you prefer using your webcam (`/dev/video0` on Linux):
 ```bash
 $ git clone https://github.com/gmontamat/python-darknet-docker.git
 $ cd python-darknet-docker
+$ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights \
+       -O test/video/yolov4-tiny.weights
 $ sudo docker run --gpus all -it --rm -v $(realpath ./test/video):/usr/src/app \
                   -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
                   --device=/dev/video0 -w /usr/src/app gmontamat/python-darknet:gpu \
@@ -89,7 +91,7 @@ Error: Can't open display X:X
 ```
 
 Fix it by running `xhost local:root` before you start the container, if you use Docker with `sudo`. Or, if you use
-the `docker` group to run containers without `sudo`, use `xhost local:docker`.
+the `docker` group to run containers without `sudo`, run `xhost local:docker`.
 
 ## TODO
 
