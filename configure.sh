@@ -85,6 +85,115 @@ case ${tag} in
   enable_cudnn
   enable_libso
   ;;
+"gpu-cc53")
+  enable_gpu
+  enable_cudnn
+  enable_arch 53
+  ;;
+"gpu-cv-cc53")
+  enable_gpu
+  enable_cudnn
+  enable_opencv
+  enable_arch 53
+  ;;
+"gpu-cc60")
+  enable_gpu
+  enable_cudnn
+  enable_arch 60
+  ;;
+"gpu-cv-cc60")
+  enable_gpu
+  enable_cudnn
+  enable_opencv
+  enable_arch 60
+  ;;
+"gpu-cc61")
+  enable_gpu
+  enable_cudnn
+  enable_arch 61
+  ;;
+"gpu-cv-cc61")
+  enable_gpu
+  enable_cudnn
+  enable_opencv
+  enable_arch 61
+  ;;
+"gpu-cc62")
+  enable_gpu
+  enable_cudnn
+  enable_arch 62
+  ;;
+"gpu-cv-cc62")
+  enable_gpu
+  enable_cudnn
+  enable_opencv
+  enable_arch 62
+  ;;
+"gpu-cc70")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_arch 70
+  ;;
+"gpu-cv-cc70")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_opencv
+  enable_arch 70
+  ;;
+"gpu-cc72")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_arch 72
+  ;;
+"gpu-cv-cc72")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_opencv
+  enable_arch 72
+  ;;
+"gpu-cc75")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_arch 75
+  ;;
+"gpu-cv-cc75")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_opencv
+  enable_arch 75
+  ;;
+"gpu-cc80")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_arch 80
+  ;;
+"gpu-cv-cc80")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_opencv
+  enable_arch 80
+  ;;
+"gpu-cc86")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_arch 86
+  ;;
+"gpu-cv-cc86")
+  enable_gpu
+  enable_cudnn
+  enable_cudnn_half
+  enable_opencv
+  enable_arch 86
+  ;;
 *)
   echo "error: $tag is not supported"
   exit 1
