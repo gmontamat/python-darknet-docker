@@ -16,7 +16,7 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
 
   if [[ "$DOCKER_TAG" == gpu* ]]; then
     echo "building with GPU support"
-    if [[ "$DOCKER_TAG" == *-cv ]]; then
+    if [[ "$DOCKER_TAG" == *-cv* ]]; then
       echo "building with OpenCV support"
       docker build \
         --build-arg CONFIG=$VAR \
@@ -33,7 +33,7 @@ for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv; do
     fi
   else
     echo "building without GPU support"
-    if [[ "$DOCKER_TAG" == *-cv ]]; then
+    if [[ "$DOCKER_TAG" == *-cv* ]]; then
       echo "building with OpenCV support"
       docker build \
         --build-arg CONFIG=$VAR \
