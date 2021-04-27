@@ -2,6 +2,7 @@
 
 SOURCE_BRANCH="master"
 SOURCE_COMMIT=$(git ls-remote https://github.com/AlexeyAB/darknet.git HEAD | awk '{ print $1 }')
+VAR=$DOCKER_TAG
 
 docker build \
   --build-arg CONFIG=$VAR \
