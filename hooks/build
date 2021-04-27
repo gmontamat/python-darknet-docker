@@ -3,12 +3,6 @@
 SOURCE_BRANCH="master"
 SOURCE_COMMIT=$(git ls-remote https://github.com/AlexeyAB/darknet.git HEAD | awk '{ print $1 }')
 
-if [ "$DOCKER_TAG" = "latest" ]; then
-  VAR="gpu"
-else
-  VAR=$DOCKER_TAG
-fi
-
 docker build \
   --build-arg CONFIG=$VAR \
   --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
