@@ -89,51 +89,60 @@ case ${tag} in
   enable_gpu
   enable_cudnn
   enable_arch 53
+  enable_libso
   ;;
 "gpu-cv-cc53")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 53
+  enable_libso
   ;;
 "gpu-cc60")
   enable_gpu
   enable_cudnn
   enable_arch 60
+  enable_libso
   ;;
 "gpu-cv-cc60")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 60
+  enable_libso
   ;;
 "gpu-cc61")
   enable_gpu
   enable_cudnn
   enable_arch 61
+  enable_libso
   ;;
 "gpu-cv-cc61")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 61
+  enable_libso
   ;;
 "gpu-cc62")
   enable_gpu
   enable_cudnn
   enable_arch 62
+  enable_libso
   ;;
 "gpu-cv-cc62")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 62
+  enable_libso
   ;;
 "gpu-cc70")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 70
+  enable_libso
   ;;
 "gpu-cv-cc70")
   enable_gpu
@@ -141,12 +150,14 @@ case ${tag} in
   enable_cudnn_half
   enable_opencv
   enable_arch 70
+  enable_libso
   ;;
 "gpu-cc72")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 72
+  enable_libso
   ;;
 "gpu-cv-cc72")
   enable_gpu
@@ -154,12 +165,14 @@ case ${tag} in
   enable_cudnn_half
   enable_opencv
   enable_arch 72
+  enable_libso
   ;;
 "gpu-cc75")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 75
+  enable_libso
   ;;
 "gpu-cv-cc75")
   enable_gpu
@@ -167,12 +180,14 @@ case ${tag} in
   enable_cudnn_half
   enable_opencv
   enable_arch 75
+  enable_libso
   ;;
 "gpu-cc80")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 80
+  enable_libso
   ;;
 "gpu-cv-cc80")
   enable_gpu
@@ -180,12 +195,14 @@ case ${tag} in
   enable_cudnn_half
   enable_opencv
   enable_arch 80
+  enable_libso
   ;;
 "gpu-cc86")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 86
+  enable_libso
   ;;
 "gpu-cv-cc86")
   enable_gpu
@@ -193,6 +210,7 @@ case ${tag} in
   enable_cudnn_half
   enable_opencv
   enable_arch 86
+  enable_libso
   ;;
 *)
   echo "error: $tag is not supported"
