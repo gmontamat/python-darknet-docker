@@ -1,8 +1,9 @@
 # Darknet & Python Docker Images
 
 Python Docker image with the [Darknet](https://github.com/AlexeyAB/darknet) package included. These images eliminate the
-burden of compiling Darknet's library (`libdarknet.so`) and use it on Python to create YOLOv4, v3, v2 sample apps. Based
-on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayashi/darknet-docker).
+burden of compiling Darknet's library (`libdarknet.so`) and import it to Python using
+[its wrapper](https://github.com/AlexeyAB/darknet/blob/master/darknet.py) to create YOLOv4, v3, v2 sample apps.
+Based on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayashi/darknet-docker).
 
 ## Base Image Tags
 
