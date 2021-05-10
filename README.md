@@ -1,9 +1,9 @@
+# Darknet & Python Docker Images
+
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
 [![Docker Pulls](https://img.shields.io/docker/pulls/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
-![GitHub](https://img.shields.io/github/license/gmontamat/python-darknet-docker)
-
-# Darknet & Python Docker Images
+[![GitHub](https://img.shields.io/github/license/gmontamat/python-darknet-docker)](https://github.com/gmontamat/python-darknet-docker/blob/main/LICENSE)
 
 Python Docker image with the [Darknet](https://github.com/AlexeyAB/darknet) package included. These images eliminate the
 burden of compiling Darknet's library (`libdarknet.so`) and import it into Python using
