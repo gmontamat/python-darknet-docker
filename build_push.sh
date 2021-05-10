@@ -1,7 +1,9 @@
 #!/bin/bash
 
 for var in cpu cpu-noopt cpu-cv cpu-noopt-cv gpu gpu-cv \
-  gpu-cc53 gpu-cv-cc53 gpu-cc60 gpu-cv-cc60 gpu-cc61 gpu-cv-cc61 gpu-cc62 gpu-cv-cc62
+  gpu-cc53 gpu-cv-cc53 gpu-cc60 gpu-cv-cc60 gpu-cc61 gpu-cv-cc61 gpu-cc62 gpu-cv-cc62 \
+  gpu-cc70 gpu-cv-cc70 gpu-cc72 gpu-cv-cc72 gpu-cc75 gpu-cv-cc75 \
+  gpu-cc80 gpu-cv-cc80 gpu-cc86 gpu-cv-cc86
 do
 
   DOCKER_REPO="gmontamat/python-darknet"
