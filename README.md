@@ -7,8 +7,8 @@
 
 Python Docker image with the [Darknet](https://github.com/AlexeyAB/darknet) package included. These images eliminate the
 burden of compiling Darknet's library (`libdarknet.so`) and import it into Python using
-[its wrapper](https://github.com/AlexeyAB/darknet/blob/master/darknet.py) to create YOLOv4, v3, v2 sample apps.
-Based on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayashi/darknet-docker).
+[its wrapper](https://github.com/AlexeyAB/darknet/blob/master/darknet.py) to create YOLOv4, v3, v2 sample apps. Based
+on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayashi/darknet-docker).
 
 ## Base Image Tags
 
@@ -63,6 +63,7 @@ $ git clone https://github.com/gmontamat/python-darknet-docker.git
 $ cd python-darknet-docker
 $ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights \
        -O test/yolov4.weights
+$ xhost +
 $ docker run --gpus all -it --rm -v $(realpath ./test):/usr/src/app \
              -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
              -w /usr/src/app gmontamat/python-darknet:gpu python3 darknet_images.py \
@@ -70,17 +71,8 @@ $ docker run --gpus all -it --rm -v $(realpath ./test):/usr/src/app \
              --config_file cfg/yolov4.cfg --data_file cfg/coco.data
 ```
 
-#### Troubleshooting
-
-If you encounter an error message like the following:
-
-```
-No protocol specified
-Error: Can't open display X:X
-```
-
-Fix it by running `xhost local:root` before you start the container, if you use Docker with `sudo`. Or, if you use
-the `docker` group to run containers without `sudo`, run `xhost local:docker`.
+Check the [troubleshooting docker GUI apps section](#troubleshooting-docker-gui-apps) for more information about
+the `xhost` command.
 
 ### Video inference
 
@@ -100,6 +92,7 @@ $ wget https://github.com/intel-iot-devkit/sample-videos/raw/master/face-demogra
        -O test/face-demographics-walking.mp4
 $ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights \
        -O test/yolov4-tiny.weights
+$ xhost +
 $ docker run --gpus all -it --rm -v $(realpath ./test):/usr/src/app \
              -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
              -w /usr/src/app gmontamat/python-darknet:gpu python3 darknet_video.py \
@@ -114,6 +107,7 @@ $ git clone https://github.com/gmontamat/python-darknet-docker.git
 $ cd python-darknet-docker
 $ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights \
        -O test/yolov4-tiny.weights
+$ xhost +
 $ docker run --gpus all -it --rm -v $(realpath ./test):/usr/src/app \
              -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY \
              --device=/dev/video0 -w /usr/src/app gmontamat/python-darknet:gpu \
@@ -121,7 +115,20 @@ $ docker run --gpus all -it --rm -v $(realpath ./test):/usr/src/app \
              --config_file cfg/yolov4-tiny.cfg --data_file cfg/coco.data
 ```
 
-Check the [the troubleshooting section](#Troubleshooting) if you get the error message: *"No protocol specified"*.
+#### Troubleshooting docker GUI apps
+
+Running `xhost +` grants any local user access to your X screen. That might be OK for a single-user machine, but usually
+not for a multi-user system. To get things back to normal, with controlled access to the X screen, run `xhost -`.
+
+If you skip this command, you may encounter an error message like the following:
+
+```
+No protocol specified
+Error: Can't open display X:X
+```
+
+It can also be fixed by running `xhost local:root` before you start the container, if you use Docker with `sudo`. Or, if
+you use the `docker` group to run containers without `sudo`, run `xhost local:docker`.
 
 ### Advanced usage
 
