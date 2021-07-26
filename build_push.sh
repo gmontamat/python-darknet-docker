@@ -31,11 +31,11 @@ do
     fi
   else
     if [[ "$DOCKER_TAG" == *u1804 ]]; then
-      BUILDER_IMAGE=ubuntu18.04
-      BASE_IMAGE=ubuntu18.04
+      BUILDER_IMAGE=ubuntu:18.04
+      BASE_IMAGE=ubuntu:18.04
     else
-      BUILDER_IMAGE=ubuntu20.04
-      BASE_IMAGE=ubuntu20.04
+      BUILDER_IMAGE=ubuntu:20.04
+      BASE_IMAGE=ubuntu:20.04
     fi
   fi
 
