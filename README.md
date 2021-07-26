@@ -1,7 +1,7 @@
 # Darknet & Python Docker Images
 
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gmontamat/python-darknet-docker/Build%20and%20push%20tag%20to%20DockerHub)](https://github.com/gmontamat/python-darknet-docker/actions/workflows/build-push-tag.yaml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/gmontamat/python-darknet)](https://hub.docker.com/r/gmontamat/python-darknet)
 [![GitHub](https://img.shields.io/github/license/gmontamat/python-darknet-docker)](https://github.com/gmontamat/python-darknet-docker/blob/main/LICENSE)
 
@@ -20,8 +20,8 @@ Images include `python3.8`, an updated version of `pip`, and the following libra
 * [Numpy](https://pypi.org/project/numpy/)
 * [OpenCV](https://pypi.org/project/opencv-python/)
 
-Tags indicate whether the image supports GPU or not. They also refer to different flags in
-the [`Makefile`](https://github.com/AlexeyAB/darknet/blob/master/Makefile) for building the module. You can check the
+Tags indicate whether the image supports GPU or not and which base image to use. They also refer to different flags in
+the [`Makefile`](https://github.com/AlexeyAB/darknet/blob/master/Makefile) for building the library. You can check the
 meaning of each
 flag [here](https://github.com/AlexeyAB/darknet#how-to-compile-on-linux-using-make "How to compile on Linux").
 
@@ -143,9 +143,9 @@ FROM gmontamat/python-darknet:gpu
 
 ## TODO
 
-- [ ] Use GitHub Actions instead of DockerHub hooks
-- [ ] Support other python versions (3.7/3.8/3.9)
-- [ ] Use different base images (ubuntu20.04/python3.9)
+- [x] Use GitHub Actions instead of DockerHub hooks
+- [ ] Support other python versions (3.7/3.9)
+- [x] Use different base images (ubuntu:18.04/ubuntu20.04)
 - [ ] Compile OpenCV python library for CUDA support instead of just using pre-built binaries
   from [opencv-python](https://pypi.org/project/opencv-python/)
 
