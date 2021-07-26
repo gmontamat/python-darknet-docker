@@ -31,7 +31,7 @@ jobs:
         env:
           DOCKER_TAG: ${{ github.event.inputs.docker_tag }}
           DOCKERFILE_PATH: ${{ github.event.inputs.dockerfile_name }}
-          IMAGE_NAME: python-darknet:${{ github.event.inputs.docker_tag }}
+          IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/python-darknet:${{ github.event.inputs.docker_tag }}
         run: |
           chmod +x ./hooks/build
           ./hooks/build
