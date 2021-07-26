@@ -25,17 +25,21 @@ do
     if [[ "$DOCKER_TAG" == *u1804 ]]; then
       BUILDER_IMAGE=nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
       BASE_IMAGE=nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
+      LIB_OPENCV=libopencv-highgui3.2
     else
       BUILDER_IMAGE=nvidia/cuda:11.2.2-cudnn8-devel-ubuntu20.04
       BASE_IMAGE=nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+      LIB_OPENCV=libopencv-highgui4.2
     fi
   else
     if [[ "$DOCKER_TAG" == *u1804 ]]; then
       BUILDER_IMAGE=ubuntu:18.04
       BASE_IMAGE=ubuntu:18.04
+      LIB_OPENCV=libopencv-highgui3.2
     else
       BUILDER_IMAGE=ubuntu:20.04
       BASE_IMAGE=ubuntu:20.04
+      LIB_OPENCV=libopencv-highgui4.2
     fi
   fi
 
@@ -46,6 +50,7 @@ do
       docker build \
         --build-arg BUILDER_IMAGE=$BUILDER_IMAGE \
         --build-arg BASE_IMAGE=$BASE_IMAGE \
+        --build-arg LIB_OPENCV=$LIB_OPENCV \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
@@ -67,6 +72,7 @@ do
       docker build \
         --build-arg BUILDER_IMAGE=$BUILDER_IMAGE \
         --build-arg BASE_IMAGE=$BASE_IMAGE \
+        --build-arg LIB_OPENCV=$LIB_OPENCV \
         --build-arg CONFIG=$VAR \
         --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
         --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
