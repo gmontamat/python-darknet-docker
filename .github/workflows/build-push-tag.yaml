@@ -31,8 +31,11 @@ jobs:
         env:
           DOCKER_TAG: ${{ github.event.inputs.docker_tag }}
           DOCKERFILE_PATH: ${{ github.event.inputs.dockerfile_name }}
-          IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/python-darknet:${{ github.event.inputs.docker_tag }}
+          DOCKER_REPO: gmontamat/python-darknet
+          IMAGE_NAME: gmontamat/python-darknet:${{ github.event.inputs.docker_tag }}
         run: |
           chmod +x ./hooks/build
           ./hooks/build
           docker push $IMAGE_NAME
+          chmod +x ./hooks/post_push
+          ./hooks/post_push
