@@ -1,0 +1,38 @@
+# This workflow will build a Docker Image with a given tag and push it to DockerHub
+
+name: Build and push tag to DockerHub
+
+on:
+  workflow_dispatch:
+    inputs:
+      docker_tag:
+        description: 'Tag name'
+        required: true
+        default: 'gpu'
+      dockerfile_name:
+        description: 'Dockerfile name'
+        required: true
+        default: 'Dockerfile.gpu'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build tag and push
+        env:
+          DOCKER_TAG: ${{ github.event.inputs.docker_tag }}
+          DOCKERFILE_PATH: ${{ github.event.inputs.dockerfile_name }}
+          IMAGE_NAME: python-darknet:${{ github.event.inputs.docker_tag }}
+        run: |
+          chmod +x ./hooks/build
+          ./hooks/build
+          docker push $IMAGE_NAME
