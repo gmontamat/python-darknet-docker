@@ -45,8 +45,8 @@ The `python` interpreter runs by default when you start the container:
 
 ```
 $ docker run -it --rm gmontamat/python-darknet:cpu
-Python 3.6.9 (default, Jan 26 2021, 15:33:00)
-[GCC 8.4.0] on linux
+Python 3.8.10 (default, Jun  2 2021, 10:49:15)
+[GCC 9.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import darknet
 >>> import numpy as np
@@ -143,6 +143,7 @@ FROM gmontamat/python-darknet:gpu
 
 ## TODO
 
+- [ ] Use GitHub Actions instead of DockerHub hooks
 - [ ] Support other python versions (3.7/3.8/3.9)
 - [ ] Use different base images (ubuntu20.04/python3.9)
 - [ ] Compile OpenCV python library for CUDA support instead of just using pre-built binaries
