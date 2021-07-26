@@ -12,9 +12,9 @@ on [daisukekobayashi's darknet-docker images](https://github.com/daisukekobayash
 
 ## Base Image Tags
 
-CPU images are based on [Ubuntu Docker Official Images](https://hub.docker.com/_/ubuntu) (`ubuntu:18.04`) and GPU images
-are based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/) (`nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04`).
-Images include `python 3.6`, an updated version of `pip`, and the following libraries:
+CPU images are based on [Ubuntu Docker Official Images](https://hub.docker.com/_/ubuntu) (`ubuntu:20.04`) and GPU images
+are based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/) (`nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04`).
+Images include `python3.8`, an updated version of `pip`, and the following libraries:
 
 * [Darknet](https://github.com/AlexeyAB/darknet)
 * [Numpy](https://pypi.org/project/numpy/)
@@ -34,12 +34,14 @@ flag [here](https://github.com/AlexeyAB/darknet#how-to-compile-on-linux-using-ma
       architecture. You can check compute compatibility of your
       GPU [here](https://developer.nvidia.com/cuda-gpus "CUDA GPUs"). If compute compatibility is greater than or equal
       to 7.0, images are built with ``CUDNN_HALF=1``.
+* ``u1804`` tag means the images are based on `ubuntu:18.04` (when CPU-based) or
+  `nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04` (when GPU-based), and include `python3.6` instead of `python3.8`
 
 ## Usage
 
 ### Basic
 
-The `python` interpreter runs by default when the container is started:
+The `python` interpreter runs by default when you start the container:
 
 ```
 $ docker run -it --rm gmontamat/python-darknet:cpu

@@ -54,97 +54,97 @@ function enable_arch() {
 }
 
 case ${tag} in
-"cpu")
+"cpu" | "cpu-u1804")
   enable_avx
   enable_openmp
   enable_libso
   ;;
-"cpu-noopt")
+"cpu-noopt" | "cpu-noopt-u1804")
   enable_openmp
   enable_libso
   ;;
-"cpu-cv")
+"cpu-cv" | "cpu-cv-u1804")
   enable_opencv
   enable_avx
   enable_openmp
   enable_libso
   ;;
-"cpu-noopt-cv")
+"cpu-noopt-cv" | "cpu-noopt-cv-u1804")
   enable_opencv
   enable_openmp
   enable_libso
   ;;
-"gpu")
+"gpu" | "gpu-u1804")
   enable_gpu
   enable_cudnn
   enable_libso
   ;;
-"gpu-cv")
+"gpu-cv" | "gpu-cv-u1804")
   enable_opencv
   enable_gpu
   enable_cudnn
   enable_libso
   ;;
-"gpu-cc53")
+"gpu-cc53" | "gpu-cc53-u1804")
   enable_gpu
   enable_cudnn
   enable_arch 53
   enable_libso
   ;;
-"gpu-cv-cc53")
+"gpu-cv-cc53" | "gpu-cv-cc53-u1804")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 53
   enable_libso
   ;;
-"gpu-cc60")
+"gpu-cc60" | "gpu-cc60-u1804")
   enable_gpu
   enable_cudnn
   enable_arch 60
   enable_libso
   ;;
-"gpu-cv-cc60")
+"gpu-cv-cc60" | "gpu-cv-cc60-u1804")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 60
   enable_libso
   ;;
-"gpu-cc61")
+"gpu-cc61" | "gpu-cc61-u1804")
   enable_gpu
   enable_cudnn
   enable_arch 61
   enable_libso
   ;;
-"gpu-cv-cc61")
+"gpu-cv-cc61" | "gpu-cv-cc61-u1804")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 61
   enable_libso
   ;;
-"gpu-cc62")
+"gpu-cc62" | "gpu-cc62-u1804")
   enable_gpu
   enable_cudnn
   enable_arch 62
   enable_libso
   ;;
-"gpu-cv-cc62")
+"gpu-cv-cc62" | "gpu-cv-cc62-u1804")
   enable_gpu
   enable_cudnn
   enable_opencv
   enable_arch 62
   enable_libso
   ;;
-"gpu-cc70")
+"gpu-cc70" | "gpu-cc70-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 70
   enable_libso
   ;;
-"gpu-cv-cc70")
+"gpu-cv-cc70" | "gpu-cv-cc70-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
@@ -152,14 +152,14 @@ case ${tag} in
   enable_arch 70
   enable_libso
   ;;
-"gpu-cc72")
+"gpu-cc72" | "gpu-cc72-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 72
   enable_libso
   ;;
-"gpu-cv-cc72")
+"gpu-cv-cc72" | "gpu-cv-cc72-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
@@ -167,14 +167,14 @@ case ${tag} in
   enable_arch 72
   enable_libso
   ;;
-"gpu-cc75")
+"gpu-cc75" | "gpu-cc75-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 75
   enable_libso
   ;;
-"gpu-cv-cc75")
+"gpu-cv-cc75" | "gpu-cv-cc75-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
@@ -182,14 +182,14 @@ case ${tag} in
   enable_arch 75
   enable_libso
   ;;
-"gpu-cc80")
+"gpu-cc80" | "gpu-cc80-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 80
   enable_libso
   ;;
-"gpu-cv-cc80")
+"gpu-cv-cc80" | "gpu-cv-cc80-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
@@ -197,14 +197,14 @@ case ${tag} in
   enable_arch 80
   enable_libso
   ;;
-"gpu-cc86")
+"gpu-cc86" | "gpu-cc86-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
   enable_arch 86
   enable_libso
   ;;
-"gpu-cv-cc86")
+"gpu-cv-cc86" | "gpu-cv-cc86-u1804")
   enable_gpu
   enable_cudnn
   enable_cudnn_half
