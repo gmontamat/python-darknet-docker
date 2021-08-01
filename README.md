@@ -35,7 +35,8 @@ flag [here](https://github.com/AlexeyAB/darknet#how-to-compile-on-linux-using-ma
       GPU [here](https://developer.nvidia.com/cuda-gpus "CUDA GPUs"). If compute compatibility is greater than or equal
       to 7.0, images are built with ``CUDNN_HALF=1``.
 * ``u1804`` tag means the images are based on `ubuntu:18.04` (when CPU-based) or
-  `nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04` (when GPU-based), and include `python3.6` instead of `python3.8`
+  `nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04` (when GPU-based), and include `python3.6` instead of `python3.8`. Note
+  that `cc80` and `cc86` tags are not compatible with `ubuntu:18.04` base images.
 
 ## Usage
 
@@ -145,7 +146,7 @@ FROM gmontamat/python-darknet:gpu
 
 - [x] Use GitHub Actions instead of DockerHub hooks
 - [ ] Support other python versions (3.7/3.9)
-- [x] Use different base images (ubuntu:18.04/ubuntu20.04)
+- [x] Use different base images (ubuntu:18.04/ubuntu:20.04)
 - [ ] Compile OpenCV python library for CUDA support instead of just using pre-built binaries
   from [opencv-python](https://pypi.org/project/opencv-python/)
 
